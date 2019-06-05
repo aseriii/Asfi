@@ -10,8 +10,8 @@ var commands = '-ping, -twitch, -info version, -clear(number), -invitelink, -asu
 
 bot.on('ready', () =>{
     console.log('Asfi is online!');
-    bot.user.setActivity('aseri code me', {
-        type: 'WATCHING'
+    bot.user.setActivity('sleep simulator', {
+        type: 'PLAYING'
     }).catch(console.error)
 })
 
