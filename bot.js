@@ -10,8 +10,8 @@ var commands = '-ping, -twitch, -info version, -clear(number), -invitelink, -asu
 
 bot.on('ready', () =>{
     console.log('Asfi is online!');
-    bot.user.setActivity('sleep simulator', {
-        type: 'PLAYING'
+    bot.user.setActivity('Edgar Allan Poe - The Raven', {
+        type: 'LISTENING'
     }).catch(console.error)
 })
 
