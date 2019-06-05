@@ -31,7 +31,7 @@ bot.on('message', message=>{
             if(args[1] === 'version'){
                 message.channel.sendMessage(version);
             }else{
-                message.channel.sendMessage('Invalid Args')
+                message.reply('Error! Please specify an info command')
             }
             break;
         case 'clear':
