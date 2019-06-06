@@ -6,7 +6,7 @@ const BOT_TOKEN = 'NTg1NjM4MDAxNDM1MDgyNzU1.XPhf5g.BnX10_B6iD9DSOT6yHqBuBcpxbE';
 const PREFIX = '-';
 
 var version = 'Version 1.0.0';
-var commands = '-ping, -twitch, -info version, -clear(number), -invitelink, -asustatus, -kick';
+var commands = '-ping, -twitch, -info version, -clear(number), -invitelink, -asustatus, -kick, -avatar';
 
 bot.on('ready', () =>{
     console.log('Asfi is online!');
