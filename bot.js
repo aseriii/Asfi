@@ -7,20 +7,21 @@ const PREFIX = '-';
 
 var version = 'Version 1.0.7';
 var commands = '-ping, -twitch, -info version, -clear(number), -invitelink, -asustatus, -avatar';
+var serv = message.guild.name
 
-bot.on('ready', () =>{
+bot.on('ready', () => {
     console.log('Asfi is online!');
-    bot.user.setActivity('Edgar Allan Poe - The Raven', {
-        type: 'LISTENING'
+    bot.user.setActivity('aseri code me'), {
+        type: 'Watching'
     }).catch(console.error)
 })
 
-bot.on('message', message=>{
-    if(message.content.startsWith('-') == false) return
+bot.on('message', message => {
+    if (message.content.startsWith('-') == false) return
     let args = message.content.substring(PREFIX.length).split(" ");
     const embed = new Discord.RichEmbed()
 
-    switch(args[0]){
+    switch (args[0]) {
         case 'ping':
             message.channel.sendMessage('pong');
             break;
@@ -28,14 +29,14 @@ bot.on('message', message=>{
             message.channel.sendMessage('https://twitch.tv/smotheryyy')
             break;
         case 'info':
-            if(args[1] === 'version'){
+            if (args[1] === 'version') {
                 message.channel.sendMessage(version);
-            }else{
+            } else {
                 message.reply('Error! Please specify an info command')
             }
             break;
         case 'clear':
-            if(!args[1])return message.reply('Error, please define a number of messages')
+            if (!args[1]) return message.reply('Error, please define a number of messages')
             message.channel.bulkDelete(args[1]);
             break;
         case 'invitelink':
@@ -45,25 +46,47 @@ bot.on('message', message=>{
             message.reply('Well! Asu is doing one of three things, he is either coding me, studying for finals, or listening to music')
             break;
         case 'avatar':
-        if(args[1])return message.reply('Sorry, only your avatar can be fetched!')   
-        embed
-        .setTitle('Here is your Avatar!')
-        .setImage(message.author.avatarURL)
-        .setColor(0xAA15FF)
-        message.channel.sendEmbed(embed);
+            if (args[1]) return message.reply('Sorry, only your avatar can be fetched!')
+            embed
+                .setTitle('Here is your Avatar!')
+                .setImage(message.author.avatarURL)
+                .setColor(0xAA15FF)
+            message.channel.sendEmbed(embed);
             break;
         case 'commands':
             embed
-            .setTitle('Bot Command List')
-            .addField('Player Requesting', message.author.username)
-            .addField('Current Server', message.guild.name)
-            .addField('Commands', commands)
-            .setThumbnail(message.guild.iconURL)
-            .setColor(0xAA15FF)
+                .setTitle('Bot Command List')
+                .addField('Player Requesting', message.author.username)
+                .addField('Current Server', serv)
+                .addField('Commands', commands)
+                .setThumbnail(message.guild.iconURL)
+                .setColor(0xAA15FF)
             message.channel.sendEmbed(embed);
             break;
+        case 'kick':
+            if (!args[1]) message.channel.send('Please specify a player to kick')
 
+            const user = message.mentions.users.first();
+
+            if (user) {
+                const member = member.guild.member(user);
+
+                if (member) {
+                    member.kick('You have been kicked from', serv).then(() => {
+                        message.reply(`${user.tag} has been kicked`);
+                    }).catch(err => {
+                        message.reply('Failed to kick specify user');
+                        console.log(err);
+                    })
+                } else {
+                    message.reply('That user is not in your guild')
+
+                }
+            } else {
+                message.reply('That user isn\'t in the guild')
+            }
     }
+
 })
 
 bot.login(process.env.BOT_TOKEN);
