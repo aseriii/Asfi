@@ -6,7 +6,7 @@ const BOT_TOKEN = 'NTg1NjM4MDAxNDM1MDgyNzU1.XPcdLg.xRcjJylUQp6riliE3WF2BesqEnw';
 const PREFIX = '-';
 
 var version = 'Version 1.0.7';
-var commands = '-ping, -twitch, -info version, -clear(number), -invitelink, -asustatus, -avatar';
+var commands = '-ping, -twitch, -info version, -clear(number), -invitelink, -asustatus, -avatar, -kick';
 var serv = message.guild.name
 
 bot.on('ready', () => {
