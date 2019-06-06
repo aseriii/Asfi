@@ -42,7 +42,7 @@ bot.on('message', message=>{
             message.reply('Use this link to invite me to your lame servers https://discordapp.com/oauth2/authorize?client_id=585638001435082755&scope=bot&permissions=8')
             break;
         case 'asustatus':
-            message.reply('Well! Asu is doing one of three things, he is either coding me, studying for finals, or listening to music')
+            message.reply('Asu\'s activity paths currently have a 90% chance of coding me, and a 10% chance of playing a game')
             break;
         case 'avatar':
         if(args[1])return message.reply('Sorry, only your avatar can be fetched!')   
@@ -68,7 +68,7 @@ bot.on('message', message=>{
             const user = message.mentions.users.first();
             
             if(user){
-                const member = member.guild.member(user);
+                const member = message.guild.member(user);
 
                 if(member){
                     member.kick('You have been kicked from', message.guild.name).then(() =>{
