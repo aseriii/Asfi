@@ -10,8 +10,8 @@ var commands = '-ping, -twitch, -info version, -clear(number), -invitelink, -asu
 
 bot.on('ready', () =>{
     console.log('Asfi is online!');
-    bot.user.setActivity('Edgar Allan Poe - The Raven', {
-        type: 'LISTENING'
+    bot.user.setActivity('Aseri code me!', {
+        type: 'WATCHING'
     }).catch(console.error)
 })
 
@@ -61,6 +61,29 @@ bot.on('message', message=>{
             .setThumbnail(message.guild.iconURL)
             .setColor(0xAA15FF)
             message.channel.sendEmbed(embed);
+            break;
+        case 'kick':
+            if(!args[1]) message.channel.send('Please specify a user')
+
+            const user = message.mentions.users.first();
+            
+            if(user){
+                const member = member.guild.member(user);
+
+                if(member){
+                    member.kick('You have been kicked from', message.guild.name).then(() =>{
+                        message.reply(`${user.tag} has been kicked from the server`);
+                    }).catch(err =>{
+                        message.reply('Specified user was not kicked');
+                        console.log(err);
+                    });
+                } else {
+                    message.reply('That user isn\'t in the guild!')
+                }
+            } else {
+                message.reply('That user isn\'t in the guild!')
+            }
+
             break;
 
     }
